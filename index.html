@@ -1,18 +1,16 @@
 <html style="height:100%;">
 <head>
   <style>
-    a
+    html, body
     {
-      color: #222222;
-      font-family: monospace;
-      font-style: italic;
-      font-size: 2em;
+      background-color: #000000;
+      margin: 0;
+      padding: 0;
     }
 
     img
     {
-      max-width:100%;
-      max-height:100%;
+      filter: grayscale(100%);
     }
 
     td
@@ -21,45 +19,323 @@
       vertical-align: top;
     }
 
+    a
+    {
+      font-style: italic;
+    }
+
+    a:visited
+    {
+      color: #AAAAAA;
+    }
+
+    #header-container
+    {
+      background-color: #000000;
+      width: 100%;
+      z-index: 1000;
+      position: relative;
+      padding: 0;
+      margin: 0;
+    }
+
+    #header-bar
+    {
+      background-color: #FFFFFF;
+    }
+
     #heading
     {
-      font-size: 4.5em;
+      left: 0;
+      width: 30%;
+      font-size: 7.75vw;
       font-family: monospace;
+    }
+
+    #banner
+    {
+      width: 100%;
     }
 
     #about
     {
-      width: 45%;
-      font-size: 1.5em;
+      width: 40%;
+      font-size: 2.3vw;
       font-family: monospace;
-      text-align: left;
-      padding: 2%;
+      padding-top: 2%;
     }
 
-    #linkbar
+    #fixed-header
+    {
+      z-index: 999;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      font-family: monospace;
+      padding: 0;
+      margin: 0;
+      background-color: #000000;
+    }
+
+    #fixed-header-bar
     {
       background-color: #FFFFFF;
+      width: 100%;
+    }
+
+    #fixed-banner
+    {
+      height: 5.5vw;
+      margin: 0;
+      padding: 0;
+    }
+
+    #fixed-heading
+    {
+      font-size: 4vw;
+      margin: 0;
+      padding: 0;
+    }
+
+    #link-bar
+    {
+      background-color: #FFFFFF;
+    }
+
+    #link-bar-container
+    {
       text-align: center;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      font-size: 3.25vw;
+      background-color: #000000;
+    }
+
+    #zine
+    {
+      text-align: center;
+
+      font-family: monospace;
+      font-size: 5vw;
+      color: #FFFFFF;
+      font-weight: lighter;
+    }
+
+    #gallery
+    {
+      column-count: 2;
+      column-gap: 0px;
+      padding-bottom: 5%;
+    }
+
+    .gallery-image
+    {
+      max-width: 90%;
+      max-height: 90%;
       margin: auto;
-      margin-bottom: 0;
+      padding: 5%;
+    }
+
+    .gallery-caption
+    {
+      font-weight: bold;
+      font-size: 1.75vw;
+      font-family: monospace;
+      color: #CCCCCC;
+      text-align: center;
+      vertical-align: top;
+    }
+
+    .link-bar-a
+    {
+      color: #555555;
+      font-family: monospace;
+      font-style: italic;
     }
   </style>
 </head>
-<body style="background-color:#000000; height:100%;">
-  <hr></hr>
-  <table style="width: 100%; background-color: #FFFFFF;">
+<body onload="makeContent()">
+  <div id="header-container">
+    <table id="header-bar">
+      <tr>
+        <td id="heading">Paper<br />Arcade<br />Zine</td>
+        <td><img id="banner" src="https://pbs.twimg.com/profile_images/775820166676504576/s8Psv7NV.jpg"></img></td>
+        <td id="about">Paper Arcade Zine is a love letter to video games and collects the work of various artists, writers and game developers. The zine is curated by <a target="_blank" href="http://www.mysteriouscube.com">Sarah Burt</a> and <a target="_blank" href="http://jctwood.uk">James Wood</a>, two makers in Dundee, Scotland. We would love to hear from you.</td>
+      </tr>
+    </table>
+    <hr></hr>
+  </div>
+
+  <div id="fixed-header" onclick="scrollToTop()">
+  <table id="fixed-header-bar" cellspacing="0" cellpadding="0">
     <tr>
-      <td id="heading">Paper<br />Arcade<br />Zine</td>
-      <td><img src="https://pbs.twimg.com/profile_images/775820166676504576/s8Psv7NV.jpg"></img></td>
-      <td id="about">Paper Arcade Zine is a love letter to video games and collects the work of various artists, writers and game developers. The zine is curated by Sarah Burt and James Wood, two makers in Dundee, Scotland.</td>
+      <td width="5%"><img id="fixed-banner" src="https://pbs.twimg.com/profile_images/775820166676504576/s8Psv7NV.jpg"></img></td>
+      <td id="fixed-heading"><span style="padding-left: 2%"></span>Paper Arcade Zine</td>
     </tr>
   </table>
+  <hr style="margin-bottom: 0"></hr>
+  </div>
 
-  <hr></hr>
-  <footer id="linkbar">
-    <a href="twitter.com/paperarcadezine">@paperarcadezine</a>
-    <span style="padding: 2%"></span>
-    <a href="mailto:paperarcadezine@gmail.com">paperarcadezine@gmail.com</a>
-  </footer>
+  <div id="content"></div>
+
+  <div id="link-bar-container">
+    <hr style="margin-top: 0; margin-bottom: 0.25em;"></hr>
+    <footer id="link-bar">
+      <a class="link-bar-a" target="_blank" href="twitter.com/paperarcadezine">@paperarcadezine</a>
+      <span style="padding: 2%"></span>
+      <a class="link-bar-a" target="_blank" href="mailto:paperarcadezine@gmail.com">paperarcadezine@gmail.com</a>
+    </footer>
+  </div>
+
+  <script>
+    var zines = [
+      {
+          edition: "Paper Arcade 0 (July 2017)",
+          images: [
+            "https://s-media-cache-ak0.pinimg.com/736x/c8/fb/12/c8fb124927e5285e82e7488d18cd5ebf.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/7/73/Neo-Geo-AES-Controller-FL.jpg",
+            "https://i.ytimg.com/vi/3Sa2aDxvxJ8/maxresdefault.jpg",
+            "https://cdn.tutsplus.com/psd/uploads/legacy/psdtutsarticles/linkb_60vgamecovers/4.jpg"
+          ],
+          captions: [
+            "<a class='gallery-caption' href='https://en.wikipedia.org/wiki/Pong'>Pong (1972)</a>",
+            "<a class='gallery-caption' href='https://en.wikipedia.org/wiki/Neo_Geo'>Neo Geo (1990)</a>",
+            "",
+            "<a class='gallery-caption' href='https://en.wikipedia.org/wiki/Grim_Fandango'>Grim Fandango (1998)</a>"
+          ]
+        },
+      {
+          edition: "Paper Arcade 1 (October 2017)",
+          images: [
+            "https://s-media-cache-ak0.pinimg.com/originals/b7/85/20/b78520bc3889356de7229b2d218e6e0b.jpg",
+            "https://s-media-cache-ak0.pinimg.com/236x/4a/9e/fd/4a9efde06981b4884c6bfe208101f152.jpg",
+            "http://www.thegamerscouch.com/wp-content/uploads/2017/03/instruction_manual-01.jpg",
+            "https://speckycdn-sdm.netdna-ssl.com/wp-content/uploads/2011/03/papercraft_08.jpg"
+          ],
+          captions: [
+            "<a class='gallery-caption' href='https://en.wikipedia.org/wiki/Space_Invaders'>Space Invaders (1978)</a>",
+            "<a class='gallery-caption' href='https://en.wikipedia.org/wiki/Tetris'>Tetris (1984)</a>",
+            "<a class='gallery-caption' href='https://en.wikipedia.org/wiki/Zelda'>Zelda (1986)</a>",
+            "<a class='gallery-caption' href='https://en.wikipedia.org/wiki/Game_Boy'>Game Boy (1989)</a>"
+          ]
+        },
+      {
+          edition: "Paper Arcade 20 (Arcaduary 2042)",
+          images: [
+            "https://creativemess.net/wp-content/uploads/2015/01/2001SpaceOdyssey1_zps98894788.jpg",
+            "http://douglasadams.s3-website-eu-west-1.amazonaws.com/creations/infocom.gif",
+            "http://www.metroid-database.com/m1/jp_metroid_guide_05.jpg",
+            "http://img03.deviantart.net/2870/i/2009/181/1/7/vector_like_nes_game_by_juew.jpg"
+          ],
+          captions: [
+            "<a class='gallery-caption' href='https://en.wikipedia.org/wiki/2001:_A_Space_Odyssey_(film)'>2001: A Space Odyssey (1968)</a>",
+            "<a class='gallery-caption' href='https://en.wikipedia.org/wiki/The_Hitchhiker%27s_Guide_to_the_Galaxy_(video_game)'>H2G2 (1984)</a>",
+            "<a class='gallery-caption' href='https://en.wikipedia.org/wiki/Metroid'>Metroid (1986)</a>",
+            "<a class='gallery-caption' href='https://en.wikipedia.org/wiki/Nintendo_Entertainment_System'>NES (1983)</a>"
+          ]
+        }
+    ]
+
+    function getRandomSize(min, max)
+    {
+      return Math.round(Math.random() * (max - min) + min);
+    }
+
+    function makeContent()
+    {
+      var content = "";
+
+      for (z in zines)
+      {
+        content += "<br />";
+        content += makeHeading(zines[z].edition);
+        content += "<br />";
+        content += makeGallery(zines[z].images, zines[z].captions);
+        content += "<hr />";
+      }
+
+      document.getElementById("content").innerHTML = content;
+    }
+
+    function makeHeading(edition)
+    {
+      return "<div id='zine'>" + edition + "</div>";
+    }
+
+    function makeGallery(images, captions)
+    {
+      var gallery = "<div id='gallery'>";
+
+      for (var i in images)
+      {
+        gallery += "<img class='gallery-image' src='" + images[i] + "'></img>";
+
+        if (i < captions.length && captions[i] != "")
+        {
+          gallery += "<div class='gallery-caption'>" + captions[i] + "</div>";
+        }
+      }
+
+      gallery += "</div>";
+
+      return gallery;
+    }
+
+    function scrollToTop()
+    {
+      var currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
+
+      if (currentScroll > 0)
+      {
+         window.requestAnimationFrame(scrollToTop);
+         window.scrollTo(0, currentScroll - (currentScroll / 2));
+       }
+    }
+
+    // a key map of allowed keys
+  var allowedKeys = {
+    37: 'left',
+    38: 'up',
+    39: 'right',
+    40: 'down',
+    65: 'a',
+    66: 'b'
+  };
+
+  // the 'official' Konami Code sequence
+  var konamiCode = ['up', 'up', 'down', 'down', 'left', 'right', 'left', 'right', 'b', 'a'];
+
+  // a variable to remember the 'position' the user has reached so far.
+  var konamiCodePosition = 0;
+
+  // add keydown event listener
+  document.addEventListener('keydown', function(e) {
+    // get the value of the key code from the key map
+    var key = allowedKeys[e.keyCode];
+    // get the value of the required key from the konami code
+    var requiredKey = konamiCode[konamiCodePosition];
+
+    // compare the key with the required key
+    if (key == requiredKey) {
+
+      // move to the next key in the konami code sequence
+      konamiCodePosition++;
+
+      // if the last key is reached, activate cheats
+      if (konamiCodePosition == konamiCode.length)
+        activateCheats();
+    } else
+      konamiCodePosition = 0;
+  });
+
+  function activateCheats()
+  {
+    var audio = new Audio("paperarcadezine.wav");
+    audio.play();
+    konamiCodePosition = 0;
+  }
+  </script>
 </body>
 </html>

@@ -72,7 +72,7 @@
 
     #fixed-header
     {
-      z-index: 999;
+      z-index: 1;
       position: fixed;
       top: 0;
       width: 100%;
@@ -162,6 +162,28 @@
       font-family: monospace;
       font-style: italic;
     }
+
+    #fullScreenBackground
+    {
+      background-color: #000000CC;
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      z-index: 10;
+    }
+
+    #fullScreenImage
+    {
+      position: absolute;
+      width: 80%;
+      max-width: 80%;
+      max-height: 80%;
+      margin: auto;
+      top: 0; left: 0; bottom: 0; right: 0;
+      filter: grayscale(0%);
+    }
   </style>
 </head>
 <body onload="">
@@ -169,7 +191,7 @@
     <table id="header-bar">
       <tr>
         <td id="heading">Paper<br />Arcade<br />Zine</td>
-        <td><img id="banner" src="https://pbs.twimg.com/profile_images/775820166676504576/s8Psv7NV.jpg"></img></td>
+        <td><img id="banner" onclick="makeContent()" src="https://pbs.twimg.com/profile_images/775820166676504576/s8Psv7NV.jpg"></img></td>
         <td id="about">Paper Arcade Zine is a love letter to video games and collects the work of various artists, writers and game developers. The zine is curated by <a target="_blank" href="http://www.mysteriouscube.com">Sarah Burt</a> and <a target="_blank" href="http://jctwood.uk">James Wood</a>, two makers in Dundee, Scotland. We would love to hear from you.</td>
       </tr>
     </table>
@@ -294,7 +316,7 @@
 
       for (var i in images)
       {
-        gallery += "<img class='gallery-image' src='" + images[i] + "'></img>";
+        gallery += "<img class='gallery-image' onclick='fillScreen(\"" + images[i] + "\")' src='" + images[i] + "'></img>";
 
         if (i < captions.length && captions[i] != "")
         {
@@ -305,6 +327,34 @@
       gallery += "</div>";
 
       return gallery;
+    }
+
+    function fillScreen(src)
+    {
+      if (document.getElementById("fullScreenBackground") != null)
+      {
+        document.getElementById("fullScreenBackground").remove();
+      }
+
+      var fullScreenBackground = document.createElement('div');
+      fullScreenBackground.setAttribute('id', 'fullScreenBackground');
+      fullScreenBackground.setAttribute('onclick', 'exitFullScreen()');
+
+      var fullScreenImage = document.createElement('img');
+      fullScreenImage.setAttribute('id', 'fullScreenImage');
+      fullScreenImage.setAttribute('src', src);
+
+      fullScreenBackground.appendChild(fullScreenImage);
+
+      document.body.appendChild(fullScreenBackground);
+    }
+
+    function exitFullScreen()
+    {
+      if (document.getElementById("fullScreenBackground") != null)
+      {
+        document.getElementById("fullScreenBackground").remove();
+      }
     }
 
     function scrollToTop()

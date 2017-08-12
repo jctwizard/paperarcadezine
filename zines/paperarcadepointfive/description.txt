@@ -1,0 +1,6 @@
+{
+  name: "Paper Arcade 0.5",
+  description: "A love letter to video games.",
+  date: "31/08/2017",
+  zine-count: 0
+}

@@ -1,0 +1,4 @@
+{
+  0: "gameplayarcade",
+  1: "paperarcadepointfive"
+}

@@ -1,0 +1,16 @@
+{
+  name: "Cool Interlude",
+  description: "by Malath Abbass",
+  page-count: 8,
+  page-descriptions:
+  {
+    0: "",
+    1: "",
+    2: "",
+    3: "",
+    4: "",
+    5: "",
+    6: "",
+    7: ""
+  }
+}

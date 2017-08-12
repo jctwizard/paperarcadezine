@@ -1,18 +1,18 @@
 {
-  name: "X-Y-ZAP",
-  description: "by James Wood",
-  orientation: "landscape",
-  viewStyle: "single",
-  pageCount: 8,
-  pageDescriptions:
+  "name": "X-Y-ZAP",
+  "description": "by James Wood",
+  "orientation": "landscape",
+  "viewStyle": "single",
+  "pageCount": 8,
+  "pageDescriptions":
   {
-    0: "enter the house?",
-    1: "asda",
-    2: "afwwa",
-    3: "dadw <a href="http://jctwood.uk">link test</a>",
-    4: "adas",
-    5: "12ad",
-    6: "as2222",
-    7: "awdaw"
+    "0": "enter the house?",
+    "1": "asda",
+    "2": "afwwa",
+    "3": "dadw <a href="http://jctwood.uk">link test</a>",
+    "4": "adas",
+    "5": "12ad",
+    "6": "as2222",
+    "7": "awdaw"
   }
 }

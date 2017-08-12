@@ -1,4 +1,4 @@
 {
-  0: "gameplayarcade",
-  1: "paperarcadepointfive"
+  "0":"gameplayarcade",
+  "1":"paperarcadepointfive"
 }

@@ -64,6 +64,8 @@ function loadZines()
             collections[collection.toString()].path = collectionPath;
             collections[collection.toString()].zines = {};
 
+            console.log(zinesObject.zineCount);
+
             for (var zine = 0; zine < zinesObject.zineCount; collection++)
             {
               var descriptionFile = new XMLHttpRequest();

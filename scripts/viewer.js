@@ -30,7 +30,7 @@ function viewZine()
 
 function loadZines()
 {
-  function()
+  var load = (function()
   {
     var collectionsFile = new XMLHttpRequest();
     collectionsFile.open("GET", "zines/collections.txt", true);

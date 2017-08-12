@@ -74,7 +74,6 @@ function loadZines()
 
                 for (var zine = 0; zine < zinesObject.zineCount; collection++)
                 {
-                  badnews = hello why;
                   (function(zine)
                   {
                     descriptionFiles[collection][zine] = new XMLHttpRequest();

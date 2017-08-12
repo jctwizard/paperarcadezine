@@ -25,9 +25,7 @@ function getZine(zineIndex)
 
 function viewZine(parent)
 {
-  var text = loadFile("zines/index.txt");
-
-  document.body.innerHTML += "<div>" + text + "</div>";
+  loadFile("zines/index.txt");
 
   for (var i = 0; i < 8; i++)
   {
@@ -37,16 +35,16 @@ function viewZine(parent)
 
 function loadFile(filePath)
 {
-  var result = null;
-  var xmlHttp = new XMLHttpRequest();
+  var file = new XMLHttpRequest();
 
-  xmlHttp.open("GET", filePath, false);
-  xmlHttp.send();
+  file.open("GET", filePath, true);
+  file.send();
 
-  if (xmlHttp.status == 200)
+  file.onreadystatechange = function()
   {
-    result = xmlHttp.responseText;
-  }
-
-  return result;
+    if (file.readyState == 4 && file.status == 200)
+    {
+      console.log(file.responseText);
+    }
+  };
 }

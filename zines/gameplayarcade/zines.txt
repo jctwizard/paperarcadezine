@@ -2,5 +2,5 @@
   name: "Gameplay Arcade Jam",
   description: "in collaboration with Biome Collective and Dundee Central Library.",
   date: "26/06/2017",
-  zine-count: 2
+  zineCount: 2
 }

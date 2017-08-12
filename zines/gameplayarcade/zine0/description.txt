@@ -2,9 +2,9 @@
   name: "X-Y-ZAP",
   description: "by James Wood",
   orientation: "landscape",
-  view-style: "single",
-  page-count: 8,
-  page-descriptions:
+  viewStyle: "single",
+  pageCount: 8,
+  pageDescriptions:
   {
     0: "enter the house?",
     1: "asda",

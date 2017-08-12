@@ -1,6 +1,6 @@
-var collections = [];
+var collections = {};
 
-viewZine();
+loadZines();
 
 function initViewer()
 {
@@ -23,28 +23,77 @@ function getZine(zineIndex)
 
 }
 
-function viewZine(parent)
+function viewZine()
 {
-  loadFile("zines/index.txt");
-
-  for (var i = 0; i < 8; i++)
-  {
-    document.body.innerHTML += "<img src='zines/gameplayarcade/zine0/page" + i.toString() + ".png'></img>";
-  }
+  console.log(collections);
 }
 
-function loadFile(filePath)
+function loadZines()
 {
-  var file = new XMLHttpRequest();
+  var collectionsFile = new XMLHttpRequest();
+  collectionsFile.open("GET", "zines/collections.txt", true);
+  collectionsFile.send();
 
-  file.open("GET", filePath, true);
-  file.send();
+  var loadedFlags = [];
+  loadedFlags.push("collection");
 
-  file.onreadystatechange = function()
+  collectionsFile.onreadystatechange = function()
   {
-    if (file.readyState == 4 && file.status == 200)
+    if (collectionsFile.readyState == 4 && collectionsFile.status == 200)
     {
-      console.log(file.responseText);
+      var collectionsObject = JSON.parse(collectionsFile.responseText);
+
+      for (var collection = 0; collection < Object.keys(collectionsObject).length; collection++)
+      {
+        var zinesFile = new XMLHttpRequest();
+        var collectionPath = collectionsObject[collection.toString()];
+        zinesFile.open("GET", "zines/" + collectionPath + "/zines.txt", true);
+        zinesFile.send();
+
+        loadedFlags.push("zines" + collection.toString());
+
+        zinesFile.onreadystatechange = function()
+        {
+          if (zinesFile.readyState == 4 && zinesFile.status == 200)
+          {
+            var zinesObject = JSON.parse(zinesFile.responseText);
+
+            collections[collection.toString()] = zinesObject;
+            collections[collection.toString()].path = collectionPath;
+            collections[collection.toString()].zines = {};
+
+            for (var zine = 0; zine < zinesObject.zineCount; collection++)
+            {
+              var descriptionFile = new XMLHttpRequest();
+              descriptionFile.open("GET", "zines/" + collectionPath + "/zine" + zine.toString() + "/description.txt", true);
+              descriptionFile.send();
+
+              loadedFlags.push("description" + collection.toString() + "." + zine.toString());
+
+              descriptionFile.onreadystatechange = function()
+              {
+                if (descriptionFile.readyState == 4 && descriptionFile.status == 200)
+                {
+                  var descriptionObject = JSON.parse(descriptionFile.responseText);
+
+                  collections[collection.toString()].zines[zine.toString()] = descriptionObject;
+                }
+
+                loadedFlags.splice(loadedFlags.indexOf("description" + collection.toString() + "." + zine.toString()), 1);
+
+                if (loadedFlags.length() == 0)
+                {
+                  viewZine();
+                }
+              }
+            }
+          }
+
+          loadedFlags.splice(loadedFlags.indexOf("zines" + collection.toString()), 1);
+        }
+      }
+
+      loadedFlags.splice(loadedFlags.indexOf("collection"), 1);
     }
   };
 }

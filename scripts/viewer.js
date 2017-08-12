@@ -71,13 +71,13 @@ function loadZines()
                 collections[collection.toString()].zines = {};
 
                 console.log(zinesObject.zineCount);
-                descriptionFiles.push(new Array());
+                descriptionFiles[collection] = [];
 
                 for (var zine = 0; zine < zinesObject.zineCount; collection++)
                 {
                   (function(zine)
                   {
-                    descriptionFiles[collection] = new XMLHttpRequest();
+                    descriptionFiles[collection][zine] = new XMLHttpRequest();
                     descriptionFiles[collection][zine].open("GET", "zines/" + collectionPath + "/zine" + zine.toString() + "/description.txt", true);
                     descriptionFiles[collection][zine].send();
 

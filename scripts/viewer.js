@@ -46,7 +46,6 @@ function loadZines()
         console.log(collectionsFile.responseText);
         var collectionsObject = JSON.parse(collectionsFile.responseText.toString());
         var zinesFiles = [];
-        var descriptionFiles = [];
 
         for (var collection = 0; collection < collectionsObject.collectionCount; collection++)
         {
@@ -71,13 +70,14 @@ function loadZines()
                 collections[collection.toString()].zines = {};
 
                 console.log(zinesObject.zineCount);
-                descriptionFiles[collection] = [];
+                var descriptionFiles = [];
 
                 for (var zine = 0; zine < zinesObject.zineCount; collection++)
                 {
                   (function(zine)
                   {
-                    descriptionFiles[collection].push(new XMLHttpRequest());
+                    console.log(descriptionFiles);
+                    descriptionFiles[collection][zine] = (new XMLHttpRequest());
                     descriptionFiles[collection][zine].open("GET", "zines/" + collectionPath + "/zine" + zine.toString() + "/description.txt", true);
                     descriptionFiles[collection][zine].send();
 

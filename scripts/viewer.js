@@ -121,6 +121,7 @@ function loadZines()
 
                       if (loadedFlags.length == 0)
                       {
+                        console.log("collection: " + collection.toString() + ", zine: " + zine.toString());
                         viewZine();
                       }
                     }

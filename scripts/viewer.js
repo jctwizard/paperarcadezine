@@ -71,7 +71,7 @@ function loadZines()
                 collections[collection.toString()].zines = {};
 
                 console.log(zinesObject.zineCount);
-                descrptionFiles[collection] = [];
+                descriptionFiles[collection] = [];
 
                 for (var zine = 0; zine < zinesObject.zineCount; collection++)
                 {

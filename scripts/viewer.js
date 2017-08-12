@@ -46,7 +46,7 @@ function loadZines()
         console.log(collectionsFile.responseText);
         var collectionsObject = JSON.parse(collectionsFile.responseText.toString());
         var zinesFiles = [];
-        var descriptionFiles = new Array();
+        var descriptionFiles = [[],[]];
 
         for (var collection = 0; collection < collectionsObject.collectionCount; collection++)
         {
@@ -71,8 +71,6 @@ function loadZines()
                 collections[collection.toString()].zines = {};
 
                 console.log(zinesObject.zineCount);
-
-                var descriptionFiles[collection] = new Array();
 
                 for (var zine = 0; zine < zinesObject.zineCount; collection++)
                 {

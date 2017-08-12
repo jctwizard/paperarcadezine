@@ -44,7 +44,7 @@ function loadZines()
       console.log(collectionsFile.responseText);
       var collectionsObject = JSON.parse(collectionsFile.responseText.toString());
 
-      for (var collection = 0; collection < collection.collectionCount; collection++)
+      for (var collection = 0; collection < collectionsObject.collectionCount; collection++)
       {
         var zinesFile = new XMLHttpRequest();
         var collectionPath = collectionsObject[collection.toString()];

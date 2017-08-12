@@ -86,7 +86,7 @@ function loadZines()
                       {
                         console.log(descriptionFiles[collection][zine].responseText);
                         var descriptionObject;
-                        
+
                         try
                         {
                           descriptionObject = JSON.parse(descriptionFiles[collection][zine].responseText.toString());
@@ -103,7 +103,7 @@ function loadZines()
 
                       if (loadedFlags.length == 0)
                       {
-                        viewZine();
+                        //viewZine();
                       }
                     }
                   })(zine);

@@ -42,7 +42,7 @@ function loadZines()
     if (collectionsFile.readyState == 4 && collectionsFile.status == 200)
     {
       console.log(collectionsFile.responseText);
-      var collectionsObject = JSON.parse(collectionsFile.responseText);
+      var collectionsObject = JSON.parse(collectionsFile.responseText.toString());
 
       for (var collection = 0; collection < Object.keys(collectionsObject).length; collection++)
       {
@@ -58,7 +58,7 @@ function loadZines()
           if (zinesFile.readyState == 4 && zinesFile.status == 200)
           {
             console.log(zinesFile.responseText);
-            var zinesObject = JSON.parse(zinesFile.responseText);
+            var zinesObject = JSON.parse(zinesFile.responseText.toString());
 
             collections[collection.toString()] = zinesObject;
             collections[collection.toString()].path = collectionPath;
@@ -77,7 +77,7 @@ function loadZines()
                 if (descriptionFile.readyState == 4 && descriptionFile.status == 200)
                 {
                   console.log(descriptionFile.responseText);
-                  var descriptionObject = JSON.parse(descriptionFile.responseText);
+                  var descriptionObject = JSON.parse(descriptionFile.responseText.toString());
 
                   collections[collection.toString()].zines[zine.toString()] = descriptionObject;
                 }

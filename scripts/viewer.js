@@ -77,7 +77,7 @@ function loadZines()
                 {
                   (function(zine)
                   {
-                    descriptionFiles[collection][zine] = new XMLHttpRequest();
+                    descriptionFiles[collection].push(new XMLHttpRequest());
                     descriptionFiles[collection][zine].open("GET", "zines/" + collectionPath + "/zine" + zine.toString() + "/description.txt", true);
                     descriptionFiles[collection][zine].send();
 

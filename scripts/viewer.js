@@ -25,6 +25,10 @@ function getZine(zineIndex)
 
 function viewZine(parent)
 {
+  var text = loadFile("zines/index.txt");
+
+  document.body.innerHTML += "<div>" + text + "</div>";
+
   for (var i = 0; i < 8; i++)
   {
     document.body.innerHTML += "<img src='zines/gameplayarcade/zine0/page" + i.toString() + ".png'></img>";

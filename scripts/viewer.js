@@ -39,6 +39,8 @@ function loadZines()
     var loadedFlags = [];
     loadedFlags.push("collection");
 
+    var finishedLoading = false;
+
     collectionsFile.onreadystatechange = function()
     {
       if (collectionsFile.readyState == 4 && collectionsFile.status == 200)
@@ -119,9 +121,9 @@ function loadZines()
 
                       loadedFlags.splice(loadedFlags.indexOf("description" + collection.toString() + "." + zine.toString()), 1);
 
-                      if (loadedFlags.length == 0)
+                      if (!finishedLoading && loadedFlags.length == 0)
                       {
-                        console.log("collection: " + collection.toString() + ", zine: " + zine.toString());
+                        finishedLoading = true;
                         viewZine();
                       }
                     }

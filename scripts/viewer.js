@@ -46,6 +46,7 @@ function loadZines()
         console.log(collectionsFile.responseText);
         var collectionsObject = JSON.parse(collectionsFile.responseText.toString());
         var zinesFiles = [];
+        var descriptionFiles = [];
 
         for (var collection = 0; collection < collectionsObject.collectionCount; collection++)
         {
@@ -70,24 +71,24 @@ function loadZines()
                 collections[collection.toString()].zines = {};
 
                 console.log(zinesObject.zineCount);
-                var descriptionFiles = [];
+                descriptionFiles[collection] = [];
 
                 for (var zine = 0; zine < zinesObject.zineCount; collection++)
                 {
                   (function(zine)
                   {
-                    descriptionFiles[zine] = new XMLHttpRequest();
-                    descriptionFiles[zine].open("GET", "zines/" + collectionPath + "/zine" + zine.toString() + "/description.txt", true);
-                    descriptionFiles[zine].send();
+                    descriptionFiles[collection][zine] = new XMLHttpRequest();
+                    descriptionFiles[collection][zine].open("GET", "zines/" + collectionPath + "/zine" + zine.toString() + "/description.txt", true);
+                    descriptionFiles[collection][zine].send();
 
                     loadedFlags.push("description" + collection.toString() + "." + zine.toString());
 
-                    descriptionFiles[zine].onreadystatechange = function()
+                    descriptionFiles[collection][zine].onreadystatechange = function()
                     {
-                      if (descriptionFiles[zine].readyState == 4 && descriptionFiles[zine].status == 200)
+                      if (descriptionFiles[collection][zine].readyState == 4 && descriptionFiles[collection][zine].status == 200)
                       {
-                        console.log(descriptionFiles[zine].responseText);
-                        var descriptionObject = JSON.parse(descriptionFiles[zine].responseText.toString());
+                        console.log(descriptionFiles[collection][zine].responseText);
+                        var descriptionObject = JSON.parse(descriptionFiles[collection][zine].responseText.toString());
 
                         collections[collection.toString()].zines[zine.toString()] = descriptionObject;
                       }

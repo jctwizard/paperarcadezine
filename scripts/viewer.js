@@ -73,7 +73,7 @@ function loadZines()
                 console.log(zinesObject.zineCount);
                 descriptionFiles[collection] = [];
 
-                for (var zine = 0; zine < zinesObject.zineCount; collection++)
+                for (var zine = 0; zine < zinesObject.zineCount; zine++)
                 {
                   (function(zine)
                   {

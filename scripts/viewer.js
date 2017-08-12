@@ -71,10 +71,10 @@ function loadZines()
                 collections[collection.toString()].zines = {};
 
                 console.log(zinesObject.zineCount);
-                descriptionFiles[collection] = [];
 
                 for (var zine = 0; zine < zinesObject.zineCount; collection++)
                 {
+                  badnews = hello why;
                   (function(zine)
                   {
                     descriptionFiles[collection][zine] = new XMLHttpRequest();

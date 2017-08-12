@@ -96,7 +96,7 @@ function loadZines()
 
                       loadedFlags.splice(loadedFlags.indexOf("description" + collection.toString() + "." + zine.toString()), 1);
 
-                      if (loadedFlags.length() == 0)
+                      if (loadedFlags.length == 0)
                       {
                         viewZine();
                       }

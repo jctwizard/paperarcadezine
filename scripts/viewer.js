@@ -121,7 +121,7 @@ function loadZines()
 
                       if (loadedFlags.length == 0)
                       {
-                        //viewZine();
+                        viewZine();
                       }
                     }
                   })(zine);

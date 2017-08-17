@@ -33,17 +33,13 @@ function viewZine()
   {
     zineGallery += "<div>";
 
-    console.log(collections[collection.toString()].zineCount);
-
     for (var zine = 0; zine < collections[collection.toString()].zineCount; zine++)
     {
       zineGallery += "<div>";
 
-      console.log(collections[collections.toString()]);
-
-      for (var page = 0; page < collections[collections.toString()].zines[zine.toString()].pageCount; page++)
+      for (var page = 0; page < collections[collection.toString()].zines[zine.toString()].pageCount; page++)
       {
-        zineGallery += "<img src='zines/" + collections[collections.toString()].collectionPath + "/zine" + zine.toString() + "/page" + page.toString() + ".png'></img>";
+        zineGallery += "<img src='zines/" + collections[collection.toString()].collectionPath + "/zine" + zine.toString() + "/page" + page.toString() + ".png'></img>";
 
         console.log(zineGallery);
       }

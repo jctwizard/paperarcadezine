@@ -25,7 +25,24 @@ function getZine(zineIndex)
 
 function viewZine()
 {
-  console.log(collections);
+  var zineGallery = "";
+
+  for (var collection = 0; collection < collections.collectionCount; collection++)
+  {
+    zineGallery += "<div>";
+    for (var zine = 0; zine < collections[collection.toString()].zineCount; zine++)
+    {
+      zineGallery += "<div>";
+      for (var page = 0; page < collections[collections.toString()].zines[zine.toString()].pageCount; page++)
+      {
+        zineGallery += "<img src='zines/" + collections[collections.toString()].collectionPath + "/zine" + zine.toString() + "/page" + page.toString() + ".png'></img>";
+      }
+      zineGallery += "</div>";
+    }
+    zineGallery += "</div>";
+  }
+
+  document.getElementById("content").innerHTML = zineGallery;
 }
 
 function loadZines()
@@ -59,7 +76,9 @@ function loadZines()
         var zinesFiles = [];
         var descriptionFiles = [[],[]];
 
-        for (var collection = 0; collection < collectionsObject.collectionCount; collection++)
+        collections.collectionCount = collectionsObject.collectionCount;
+
+        for (var collection = 0; collection < collections.collectionCount; collection++)
         {
           (function(collection)
           {

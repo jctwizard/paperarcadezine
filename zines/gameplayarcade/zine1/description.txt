@@ -1,8 +1,11 @@
 {
   "name": "Cool Interlude",
   "description": "by Malath Abbass",
+  "orientation": "portrait",
+  "viewStyle": "double",
   "pageCount": 8,
-  "pageDescriptions": {
+  "pageDescriptions":
+  {
     "0": "",
     "1": "",
     "2": "",

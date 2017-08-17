@@ -33,15 +33,13 @@ function viewZine()
   {
     zineGallery += "<div>";
 
-    console.log(zineGallery);
-
     console.log(collections[collection.toString()].zineCount);
-    
+
     for (var zine = 0; zine < collections[collection.toString()].zineCount; zine++)
     {
       zineGallery += "<div>";
 
-      console.log(zineGallery);
+      console.log(collections[collections.toString()].zines);
 
       for (var page = 0; page < collections[collections.toString()].zines[zine.toString()].pageCount; page++)
       {

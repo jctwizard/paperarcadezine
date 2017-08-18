@@ -39,8 +39,9 @@ function viewZine()
       zineGallery += "<div class='gallery-zine-container'>";
       zineGallery += "<div class='gallery-zine-title'>" + collections[collection.toString()].zines[zine.toString()].name + "</div>";
       zineGallery += "<div class='gallery-zine-caption'>" + collections[collection.toString()].zines[zine.toString()].description + "</div>";
-      zineGallery += "<img class='gallery-zine-cover' src='zines/" + collections[collection.toString()].path + "/zine" + zine.toString() + "/page0.png'></img>";
-      zineGallery += "</div>";
+      zineGallery += "<div class='gallery-zine-cover'>";
+      zineGallery += "<img class='gallery-zine-cover-image' src='zines/" + collections[collection.toString()].path + "/zine" + zine.toString() + "/page0.png'></img>";
+      zineGallery += "</div></div>";
     }
 
     zineGallery += "</div>";

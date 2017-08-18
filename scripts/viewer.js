@@ -147,10 +147,9 @@ function loadZines()
                       }
 
                       loadedFlags.splice(loadedFlags.indexOf("description" + collection.toString() + "." + zine.toString()), 1);
-
-                      if (!finishedLoading && loadedFlags.length == 0)
+                      console.log(loadedFlags);
+                      if (loadedFlags.length == 0)
                       {
-                        finishedLoading = true;
                         viewZine();
                       }
                     }

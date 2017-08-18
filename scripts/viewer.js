@@ -55,11 +55,6 @@ function loadZines()
     collectionsFile.open("GET", "zines/collections.txt", true);
     collectionsFile.send();
 
-    var loadedFlags = [];
-    loadedFlags.push("collection");
-
-    var finishedLoading = false;
-
     collectionsFile.onreadystatechange = function()
     {
       if (collectionsFile.readyState == 4 && collectionsFile.status == 200)
@@ -79,11 +74,6 @@ function loadZines()
         var descriptionFiles = [[],[]];
 
         collections.collectionCount = collectionsObject.collectionCount;
-
-        for (var collectionFlag = 0; collectionFlag < collections.collectionCount; collectionFlag++)
-        {
-            loadedFlags.push("zines" + collectionFlag.toString());
-        }
 
         for (var collection = 0; collection < collections.collectionCount; collection++)
         {
@@ -115,13 +105,6 @@ function loadZines()
 
                 descriptionFiles[collection] = [];
 
-                for (var zineFlag = 0; zineFlag < zinesObject.zineCount; zineFlag++)
-                {
-                  loadedFlags.push("description" + collection.toString() + "." + zineFlag.toString());
-                }
-
-                console.log(loadedFlags);
-
                 for (var zine = 0; zine < zinesObject.zineCount; zine++)
                 {
                   (function(zine)
@@ -146,25 +129,19 @@ function loadZines()
                         }
 
                         collections[collection.toString()].zines[zine.toString()] = descriptionObject;
-                      }
 
-                      loadedFlags.splice(loadedFlags.indexOf("description" + collection.toString() + "." + zine.toString()), 1);
-
-                      if (loadedFlags.length == 0)
-                      {
-                        viewZine();
+                        if (collection == collections.collectionCount - 1 && zine == zinesObject.zineCount)
+                        {
+                          viewZine();
+                        }
                       }
                     }
                   })(zine);
                 }
               }
-
-              loadedFlags.splice(loadedFlags.indexOf("zines" + collection.toString()), 1);
             }
           })(collection);
         }
-
-        loadedFlags.splice(loadedFlags.indexOf("collection"), 1);
       }
     };
   })();

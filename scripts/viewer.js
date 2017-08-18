@@ -46,6 +46,8 @@ function viewZine()
     zineGallery += "</div>";
   }
 
+  console.log(zineGallery);
+
   document.getElementById("content").innerHTML = zineGallery;
 }
 

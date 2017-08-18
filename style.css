@@ -204,18 +204,33 @@ a:visited
 }
 
 @media screen and (min-width: 800px) {
-  .overviewCaption
+  #heading
   {
      font-size: 25px;
   }
 
-  .overviewText
+  #about
   {
-    font-size: 25px;
+    font-size: 10px;
   }
 
-  #footerContents
+  #fixed-heading
   {
-    font-size: 20px;
+    font-size: 15px;
+  }
+
+  #link-bar-container
+  {
+    font-size: 10px;
+  }
+
+  #zine
+  {
+    font-size: 10px;
+  }
+
+  #gallery-caption
+  {
+    font-size: 10px;
   }
 }

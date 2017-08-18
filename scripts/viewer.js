@@ -4,8 +4,7 @@ loadZines();
 
 function initViewer()
 {
-  //var index =
-  //collections =
+  
 }
 
 function getCollectionList()

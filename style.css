@@ -213,6 +213,50 @@ a:visited
   filter: grayscale(0%);
 }
 
+.gallery-collection-container
+{
+  color: white;
+  font-family: monospace;
+  font-size: 2.5vw;
+  text-align: center;
+  padding: 0.5vw;
+}
+
+.gallery-collection-title
+{
+  font-size: 3vw;
+}
+
+.gallery-collection-caption
+{
+  font-size: 2.5vw;
+}
+
+.gallery-collection-date
+{
+  font-size: 2vw;
+}
+
+.gallery-zine-container
+{
+  width: 30%;
+}
+
+.gallery-zine-title
+{
+  font-size: 2.5vw;
+}
+
+.gallery-zine-caption
+{
+  font-size: 2vw;
+}
+
+.gallery-zine-cover
+{
+  
+}
+
 @media screen and (min-width: 800px) {
   #heading
   {

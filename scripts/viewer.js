@@ -130,7 +130,7 @@ function loadZines()
 
                         collections[collection.toString()].zines[zine.toString()] = descriptionObject;
 
-                        if (collection == collections.collectionCount - 1 && zine == zinesObject.zineCount)
+                        if (collection == (collections.collectionCount - 1) && zine == (zinesObject.zineCount - 1))
                         {
                           viewZine();
                         }

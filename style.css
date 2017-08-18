@@ -258,18 +258,19 @@ a:visited
 
 .gallery-zine-cover
 {
+  position: relative;
   width: 30vw;
   height: 30vw;
+  display: table-cell;
+  vertical-align: middle;
 }
 
 .gallery-zine-cover-image
 {
-  position: relative;
   width: auto;
   height: auto;
   max-width: 100%;
   max-height: 100%;
-  margin: auto;
 }
 
 @media screen and (min-width: 800px) {

@@ -37,13 +37,9 @@ function viewZine()
     {
       zineGallery += "<div>";
 
-      console.log(JSON.stringify(collections));
-
       for (var page = 0; page < collections[collection.toString()].zines[zine.toString()].pageCount; page++)
       {
-        zineGallery += "<img src='zines/" + collections[collection.toString()].collectionPath + "/zine" + zine.toString() + "/page" + page.toString() + ".png'></img>";
-
-        console.log(zineGallery);
+        zineGallery += "<img src='zines/" + collections[collection.toString()].path + "/zine" + zine.toString() + "/page" + page.toString() + ".png'></img>";
       }
       zineGallery += "</div>";
     }
@@ -86,6 +82,11 @@ function loadZines()
 
         collections.collectionCount = collectionsObject.collectionCount;
 
+        for (var collectionFlag = 0; collectionFlag < collections.collectionCount; collectionFlag++)
+        {
+            loadedFlags.push("zines" + collectionFlag.toString());
+        }
+
         for (var collection = 0; collection < collections.collectionCount; collection++)
         {
           (function(collection)
@@ -94,8 +95,6 @@ function loadZines()
             var collectionPath = collectionsObject[collection.toString()];
             zinesFiles[collection].open("GET", "zines/" + collectionPath + "/zines.txt", true);
             zinesFiles[collection].send();
-
-            loadedFlags.push("zines" + collection.toString());
 
             zinesFiles[collection].onreadystatechange = function()
             {
@@ -118,6 +117,11 @@ function loadZines()
 
                 descriptionFiles[collection] = [];
 
+                for (var zineFlag = 0; zineFlag < zinesObject.zineCount; zineFlag++)
+                {
+                  loadedFlags.push("description" + collection.toString() + "." + zineFlag.toString());
+                }
+
                 for (var zine = 0; zine < zinesObject.zineCount; zine++)
                 {
                   (function(zine)
@@ -125,8 +129,6 @@ function loadZines()
                     descriptionFiles[collection][zine] = new XMLHttpRequest();
                     descriptionFiles[collection][zine].open("GET", "zines/" + collectionPath + "/zine" + zine.toString() + "/description.txt", true);
                     descriptionFiles[collection][zine].send();
-
-                    loadedFlags.push("description" + collection.toString() + "." + zine.toString());
 
                     descriptionFiles[collection][zine].onreadystatechange = function()
                     {
@@ -147,7 +149,7 @@ function loadZines()
                       }
 
                       loadedFlags.splice(loadedFlags.indexOf("description" + collection.toString() + "." + zine.toString()), 1);
-                      console.log(loadedFlags);
+
                       if (loadedFlags.length == 0)
                       {
                         viewZine();

@@ -36,7 +36,7 @@ function viewZine()
 
     for (var zine = 0; zine < collections[collection.toString()].zineCount; zine++)
     {
-      zineGallery += "<div class='gallery-zine-container-" + collections[collection.toString()].zines[zine.toString()].orientation + "'>";
+      zineGallery += "<div class='gallery-zine-container'>";
       zineGallery += "<div class='gallery-zine-title'>" + collections[collection.toString()].zines[zine.toString()].name + "</div>";
       zineGallery += "<div class='gallery-zine-caption'>" + collections[collection.toString()].zines[zine.toString()].description + "</div>";
       zineGallery += "<img class='gallery-zine-cover' src='zines/" + collections[collection.toString()].path + "/zine" + zine.toString() + "/page0.png'></img>";

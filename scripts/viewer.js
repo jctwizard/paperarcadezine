@@ -4,7 +4,7 @@ loadZines();
 
 function initViewer()
 {
-  
+
 }
 
 function getCollectionList()
@@ -28,18 +28,21 @@ function viewZine()
 
   for (var collection = 0; collection < collections.collectionCount; collection++)
   {
-    zineGallery += "<div>";
+    zineGallery += "<div class='gallery-collection-container'>";
+
+    zineGallery += "<div class='gallery-collection-title'>" + colelctions[collection.toString()].name + "</div>";
+    zineGallery += "<div class='gallery-collection-caption'>" + colelctions[collection.toString()].description + "</div>";
+    zineGallery += "<div class='gallery-collection-date'>" + colelctions[collection.toString()].date + "</div>";
 
     for (var zine = 0; zine < collections[collection.toString()].zineCount; zine++)
     {
-      zineGallery += "<div>";
-
-      for (var page = 0; page < collections[collection.toString()].zines[zine.toString()].pageCount; page++)
-      {
-        zineGallery += "<img src='zines/" + collections[collection.toString()].path + "/zine" + zine.toString() + "/page" + page.toString() + ".png'></img>";
-      }
+      zineGallery += "<div class='gallery-zine-container'>";
+      zineGallery += "<div class='gallery-zine-title'>" + collections[collection.toString()].zines[zine.toString()].name + "</div>";
+      zineGallery += "<div class='gallery-zine-caption'>" + collections[collection.toString()].zines[zine.toString()].description + "</div>";
+      zineGallery += "<img class='gallery-zine-cover' src='zines/" + collections[collection.toString()].path + "/zine" + zine.toString() + "/page0.png'></img>";
       zineGallery += "</div>";
     }
+
     zineGallery += "</div>";
   }
 

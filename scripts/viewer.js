@@ -38,6 +38,7 @@ function viewZine()
       zineGallery += "<div>";
 
       console.log(collections[collection.toString()].zines);
+      console.log(collections[collection.toString()]);
 
       for (var page = 0; page < collections[collection.toString()].zines[zine.toString()].pageCount; page++)
       {

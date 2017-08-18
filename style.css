@@ -240,8 +240,8 @@ a:visited
 .gallery-zine-container
 {
   display: inline-block;
-  width: 10vw;
-  height: 10vw;
+  width: 50vw;
+  height: 50vw;
 }
 
 .gallery-zine-title

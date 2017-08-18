@@ -26,7 +26,8 @@ function viewZine()
 {
   var zineGallery = "";
 
-  for (var collection = 0; collection < collections.collectionCount; collection++)
+  // newest first
+  for (var collection = collections.collectionCount - 1; collection >= 0; collection--)
   {
     zineGallery += "<div class='gallery-collection-container'>";
 

@@ -37,6 +37,8 @@ function viewZine()
     {
       zineGallery += "<div>";
 
+      console.log(collections[collection.toString()].zines);
+
       for (var page = 0; page < collections[collection.toString()].zines[zine.toString()].pageCount; page++)
       {
         zineGallery += "<img src='zines/" + collections[collection.toString()].collectionPath + "/zine" + zine.toString() + "/page" + page.toString() + ".png'></img>";

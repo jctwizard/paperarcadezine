@@ -130,7 +130,7 @@ function loadZines()
 
                         collections[collection.toString()].zines[zine.toString()] = descriptionObject;
 
-                        console.log("collection." + collection.toString() + "/" + collections.collectionCount.toString() + ".zine." + zine.toString() + "/" + zinesObject.zineCount.toString());
+                        console.log("loading collection." + (collection + 1).toString() + "/" + collections.collectionCount.toString() + ".zine." + (zine + 1).toString() + "/" + zinesObject.zineCount.toString());
 
                         if (collection == (collections.collectionCount - 1) && zine == (zinesObject.zineCount - 1))
                         {

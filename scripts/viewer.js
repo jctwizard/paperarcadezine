@@ -25,8 +25,6 @@ function getZine(zineIndex)
 
 function viewZine()
 {
-  console.log(collections);
-
   var zineGallery = "";
 
   for (var collection = 0; collection < collections.collectionCount; collection++)
@@ -121,6 +119,8 @@ function loadZines()
                 {
                   loadedFlags.push("description" + collection.toString() + "." + zineFlag.toString());
                 }
+
+                console.log(loadedFlags);
 
                 for (var zine = 0; zine < zinesObject.zineCount; zine++)
                 {

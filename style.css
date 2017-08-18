@@ -246,8 +246,8 @@ a:visited
   width: auto;
   height: auto;
   border-color: white;
-  border-width: 0.5vw;
-  border-style: dotted;
+  border-width: 0.25vw;
+  border-style: solid;
 }
 
 .gallery-zine-title
@@ -269,7 +269,6 @@ a:visited
   position: relative;
   width: 30vw;
   height: 30vw;
-  margin: 3vw;
   display: table-cell;
   vertical-align: middle;
 }

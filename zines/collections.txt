@@ -1,5 +1,0 @@
-{
-  "collectionCount": 2,
-  "0": "gameplayarcade",
-  "1": "paperarcadepointfive"
-}

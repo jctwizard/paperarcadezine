@@ -93,17 +93,17 @@ function makeGallery(images, captions)
 
 function fillScreen(src)
 {
-  if (document.getElementById("fullScreenBackground") != null)
+  if (document.getElementById("fullscreen-background") != null)
   {
-    document.getElementById("fullScreenBackground").remove();
+    document.getElementById("fullscreen-background").remove();
   }
 
   var fullScreenBackground = document.createElement('div');
-  fullScreenBackground.setAttribute('id', 'fullScreenBackground');
+  fullScreenBackground.setAttribute('id', 'fullscreen-background');
   fullScreenBackground.setAttribute('onclick', 'exitFullScreen()');
 
   var fullScreenImage = document.createElement('img');
-  fullScreenImage.setAttribute('id', 'fullScreenImage');
+  fullScreenImage.setAttribute('id', 'fullscreen-image');
   fullScreenImage.setAttribute('src', src);
 
   fullScreenBackground.appendChild(fullScreenImage);
@@ -113,9 +113,9 @@ function fillScreen(src)
 
 function exitFullScreen()
 {
-  if (document.getElementById("fullScreenBackground") != null)
+  if (document.getElementById("fullscreen-background") != null)
   {
-    document.getElementById("fullScreenBackground").remove();
+    document.getElementById("fullscreen-background").remove();
   }
 }
 

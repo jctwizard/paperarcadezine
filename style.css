@@ -287,37 +287,222 @@ a:visited
 
 #fullscreen-background
 {
+  background-color: #000000CC;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 10;
+}
 
+#fullscreen-header
+{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 10vw;
+  text-align: center;
+  z-index: 11;
+  background-color: black;
+  color: white;
+  font-family: monospace;
 }
 
 #fullscreen-exit-button
 {
-
+  background-color: black;
+  background-size: cover;
+  position: fixed;
+  width: 10vw;
+  height: 10vw;
+  right: 0;
+  top: 0;
+  z-index: 15;
+  background-image: url("images/cross.png");
 }
 
 #fullscreen-title
 {
-
+  font-size: 3vw;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+  text-decoration: underline;
 }
 
 #fullscreen-description
 {
-
-}
-
-#fullscreen-zine
-{
-
-}
-
-#fullscreen-zine-cover
-{
-
+  font-size: 2.5vw;
+  width: 60%;
+  margin: auto;
 }
 
 #fullscreen-page-description
 {
+  font-size: 2.5vw;
+  width: 60%;
+  margin: auto;
+}
 
+#fullscreen-zine
+{
+  width: 80%;
+  height: 80%;
+  position: fixed;
+  margin: auto;
+  top: 10vw;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 11;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+#fullscreen-zine-cover
+{
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%;
+  max-height: 100%;
+  margin-left: auto;
+	margin-right: auto;
+  filter: grayscale(0%);
+  z-index: 11;
+}
+
+#fullscreen-zine-page-left
+{
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-100%, -50%);
+  max-width: 50%;
+  max-height: 50%;
+  margin-left: auto;
+	margin-right: auto;
+  filter: grayscale(0%);
+  z-index: 11;
+}
+
+#fullscreen-zine-page-right
+{
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(0%, -50%);
+  max-width: 50%;
+  max-height: 50%;
+  margin-left: auto;
+	margin-right: auto;
+  filter: grayscale(0%);
+  z-index: 11;
+}
+
+@keyframes turnCover
+{
+    0%    { transform: translate(-50%, -50%) scaleX(1) scaleY(1); z-index: 12; }
+    100%  { transform: translate(-50%, -50%) scaleX(0) scaleY(0.5); z-index: 12; }
+}
+
+.turnFromCover
+{
+  animation-name: turnCover;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+}
+
+.turnToCover
+{
+  animation-name: turnCover;
+  animation-duration: 0.5s;
+  animation-direction: reverse;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+  animation-delay: 0.5s;
+}
+
+@keyframes turnLeftCover
+{
+    0%    { max-width: 0%; }
+    50%   { max-width: 0%; }
+    100%  { max-width: 50%; }
+}
+
+.turnLeftFromCover
+{
+  animation-name: turnLeftCover;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+}
+
+@keyframes turnRightCover
+{
+    0%    { max-width: 100%; max-height: 100%; left: 0%; }
+    100%  { max-width: 50%; max-height: 50%; left: 50%; }
+}
+
+.turnRightFromCover
+{
+  animation-name: turnRightCover;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes turnLeftPage
+{
+    0%    { transform: scaleX(1); }
+    100%  { transform: scaleX(0); }
+}
+
+.turnToLeftPage
+{
+  animation-name: turnLeftPage;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+  animation-direction: reverse;
+  animation-delay: 0.5s;
+}
+
+.turnFromLeftPage
+{
+  animation-name: turnLeftPage;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+}
+
+@keyframes turnRightPage
+{
+    0%    { transform: scaleX(1); }
+    100%  { transform: scaleX(0); }
+}
+
+.turnToRightPage
+{
+  animation-name: turnRightPage;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+  animation-direction: reverse;
+  animation-delay: 0.5s;
+}
+
+.turnFromRightPage
+{
+  animation-name: turnRightPage;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
 }
 
 @media screen and (min-width: 800px) {
@@ -388,24 +573,25 @@ a:visited
     height: 320px;
   }
 
-  #fullscreen-background
+  #fullscreen-header
   {
-
+    height: 80px;
   }
 
   #fullscreen-exit-button
   {
-
+    width: 80px;
+    height: 80px;
   }
 
   #fullscreen-title
   {
-
+    font-size: 24px;
   }
 
   #fullscreen-description
   {
-
+    font-size: 20px;
   }
 
   #fullscreen-zine
@@ -420,6 +606,11 @@ a:visited
 
   #fullscreen-page-description
   {
+    font-size: 20px;
+  }
 
+  #fullscreen-zine
+  {
+    top: 80px;
   }
 }

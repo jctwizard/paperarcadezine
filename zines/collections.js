@@ -13,8 +13,7 @@ collections = {
         "orientation": "landscape",
         "viewStyle": "single",
         "pageCount": 8,
-        "pageDescriptions":
-        {
+        "pageDescriptions": {
           "0": "enter the house?",
           "1": "asda",
           "2": "afwwa",
@@ -31,8 +30,7 @@ collections = {
         "orientation": "portrait",
         "viewStyle": "double",
         "pageCount": 8,
-        "pageDescriptions":
-        {
+        "pageDescriptions": {
           "0": "",
           "1": "",
           "2": "",
@@ -49,8 +47,7 @@ collections = {
         "orientation": "portrait",
         "viewStyle": "double",
         "pageCount": 8,
-        "pageDescriptions":
-        {
+        "pageDescriptions": {
           "0": "",
           "1": "",
           "2": "",
@@ -67,8 +64,7 @@ collections = {
         "orientation": "portrait",
         "viewStyle": "double",
         "pageCount": 8,
-        "pageDescriptions":
-        {
+        "pageDescriptions": {
           "0": "",
           "1": "",
           "2": "",
@@ -85,8 +81,7 @@ collections = {
         "orientation": "portrait",
         "viewStyle": "double",
         "pageCount": 8,
-        "pageDescriptions":
-        {
+        "pageDescriptions": {
           "0": "",
           "1": "",
           "2": "",
@@ -103,8 +98,7 @@ collections = {
         "orientation": "portrait",
         "viewStyle": "double",
         "pageCount": 8,
-        "pageDescriptions":
-        {
+        "pageDescriptions": {
           "0": "",
           "1": "",
           "2": "",

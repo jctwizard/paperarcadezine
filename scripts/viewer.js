@@ -133,7 +133,7 @@ function turnCover()
     }
 
     cover.classList.add("turnFromCover");
-    setTimeout("removeById('fullscreen-zine-cover')", turnTime + 1500);
+    setTimeout("removeById('fullscreen-zine-cover')", turnTime + 1600);
 
     if (pageCount > 1)
     {
@@ -174,11 +174,11 @@ function turnBackPage()
   }
 
   pageLeft.classList.add("turnFromLeftPage");
-  setTimeout("removeById('fullscreen-zine-page-left')", turnTime);
+  setTimeout("removeById('fullscreen-zine-page-left')", turnTime + 100);
 
   if (pageIndex < (pageCount - 1))
   {
-    setTimeout("removeById('fullscreen-zine-page-right')", turnTime * 2);
+    setTimeout("removeById('fullscreen-zine-page-right')", turnTime * 2 + 100);
   }
 
   if (pageIndex == 1)
@@ -230,8 +230,8 @@ function turnForwardPage()
     }
 
     pageRight.classList.add("turnFromRightPage");
-    setTimeout("removeById('fullscreen-zine-page-left')", turnTime * 2);
-    setTimeout("removeById('fullscreen-zine-page-right')", turnTime);
+    setTimeout("removeById('fullscreen-zine-page-left')", turnTime * 2 + 100);
+    setTimeout("removeById('fullscreen-zine-page-right')", turnTime + 100);
 
     pageIndex += 2;
 

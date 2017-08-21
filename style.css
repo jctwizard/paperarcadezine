@@ -358,14 +358,16 @@ a:visited
   right: 0;
   bottom: 0;
   z-index: 11;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1000px;
+  perspective-origin: center;
 }
 
 #fullscreen-zine-cover
 {
-  position: fixed;
+  position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -379,10 +381,10 @@ a:visited
 
 #fullscreen-zine-page-left
 {
-  position: fixed;
+  position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-100%, -50%);
+  transform: translate(-100%, -50%) scaleX(1) scaleY(1);
   max-width: 50%;
   max-height: 50%;
   margin-left: auto;
@@ -393,10 +395,10 @@ a:visited
 
 #fullscreen-zine-page-right
 {
-  position: fixed;
+  position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(0%, -50%);
+  transform: translate(0%, -50%) scaleX(1) scaleY(1);
   max-width: 50%;
   max-height: 50%;
   margin-left: auto;
@@ -408,46 +410,63 @@ a:visited
 @keyframes turnCover
 {
     0%    { transform: translate(-50%, -50%) scaleX(1) scaleY(1); z-index: 12; }
+    50%   { transform: translate(-25%, -50%) scaleX(0.5) scaleY(0.5); z-index: 12; }
     100%  { transform: translate(-50%, -50%) scaleX(0) scaleY(0.5); z-index: 12; }
 }
 
 .turnFromCover
 {
   animation-name: turnCover;
-  animation-duration: 0.5s;
+  animation-duration: 1.5s;
   animation-fill-mode: forwards;
-  animation-timing-function: ease-out;
+  animation-timing-function: ease-in;
+}
+
+@keyframes turnToCover
+{
+    0%    { transform: translate(-50%, -50%) scaleX(1) scaleY(1); z-index: 12; }
+    33%   { transform: translate(-25%, -50%) scaleX(0.5) scaleY(0.5); z-index: 12; }
+    66%   { transform: translate(-50%, -50%) scaleX(0) scaleY(0.5); z-index: 12; }
+    100%  { transform: translate(-50%, -50%) scaleX(0) scaleY(0.5); z-index: 12; }
 }
 
 .turnToCover
 {
-  animation-name: turnCover;
-  animation-duration: 0.5s;
+  animation-name: turnToCover;
+  animation-duration: 1.5s;
   animation-direction: reverse;
   animation-fill-mode: forwards;
-  animation-timing-function: ease-out;
-  animation-delay: 0.5s;
+  animation-timing-function: linear;
 }
 
 @keyframes turnLeftCover
 {
-    0%    { max-width: 0%; }
-    50%   { max-width: 0%; }
-    100%  { max-width: 50%; }
+    0%    { transform: translate(-50%, -50%) scaleX(0) scaleY(1); z-index: 11; }
+    75%   { transform: translate(-50%, -50%) scaleX(0) scaleY(1); z-index: 11; }
+    100%  { transform: translate(-100%, -50%) scaleX(1) scaleY(1); z-index: 11; }
 }
 
 .turnLeftFromCover
 {
   animation-name: turnLeftCover;
-  animation-duration: 1s;
+  animation-duration: 2.0s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+}
+
+.turnLeftToCover
+{
+  animation-name: turnLeftCover;
+  animation-duration: 2.0s;
+  animation-direction: reverse;
   animation-fill-mode: forwards;
   animation-timing-function: ease-out;
 }
 
 @keyframes turnRightCover
 {
-    0%    { max-width: 100%; max-height: 100%; left: 0%; }
-    100%  { max-width: 50%; max-height: 50%; left: 50%; }
+    0%    { transform: translate(0%, -50%) scaleX(1) scaleY(1); z-index: 11; }
+    100%  { transform: translate(0%, -50%) scaleX(1) scaleY(1); z-index: 11; }
 }
 
 .turnRightFromCover
@@ -455,22 +474,31 @@ a:visited
   animation-name: turnRightCover;
   animation-duration: 0.5s;
   animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
 }
 
 @keyframes turnLeftPage
 {
-    0%    { transform: scaleX(1); }
-    100%  { transform: scaleX(0); }
+    0%    { transform: translate(-100%, -50%) scaleX(1); z-index: 12; }
+    100%  { transform: translate(-50%, -50%) scaleX(0); z-index: 12; }
+    110%  { transform: translate(-50%, -50%) scaleX(0); z-index: 11; }
+}
+
+@keyframes turnToLeftPage
+{
+    0%    { transform: translate(-100%, -50%) scaleX(1); z-index: 12; }
+    50%    { transform: translate(-50%, -50%) scaleX(0); z-index: 12; }
+    100%  { transform: translate(-50%, -50%) scaleX(0); z-index: 12; }
+    110%  { transform: translate(-50%, -50%) scaleX(0); z-index: 11; }
 }
 
 .turnToLeftPage
 {
-  animation-name: turnLeftPage;
-  animation-duration: 0.5s;
+  animation-name: turnToLeftPage;
+  animation-duration: 1s;
   animation-fill-mode: forwards;
   animation-timing-function: ease-out;
   animation-direction: reverse;
-  animation-delay: 0.5s;
 }
 
 .turnFromLeftPage
@@ -483,18 +511,26 @@ a:visited
 
 @keyframes turnRightPage
 {
-    0%    { transform: scaleX(1); }
-    100%  { transform: scaleX(0); }
+    0%    { transform: translate(0%, -50%) scaleX(1); z-index: 12; }
+    100%  { transform: translate(-50%, -50%) scaleX(0); z-index: 12; }
+    110%  { transform: translate(-50%, -50%) scaleX(0); z-index: 11; }
+}
+
+@keyframes turnToRightPage
+{
+    0%    { transform: translate(0%, -50%) scaleX(1); z-index: 12; }
+    50%   { transform: translate(-50%, -50%) scaleX(0); z-index: 12; }
+    100%  { transform: translate(-50%, -50%) scaleX(0); z-index: 12; }
+    110%  { transform: translate(-50%, -50%) scaleX(0); z-index: 11; }
 }
 
 .turnToRightPage
 {
-  animation-name: turnRightPage;
-  animation-duration: 0.5s;
+  animation-name: turnToRightPage;
+  animation-duration: 1s;
   animation-fill-mode: forwards;
   animation-timing-function: ease-out;
   animation-direction: reverse;
-  animation-delay: 0.5s;
 }
 
 .turnFromRightPage

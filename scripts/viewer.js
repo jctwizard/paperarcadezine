@@ -44,6 +44,12 @@ function viewGallery()
   document.getElementById("gallery").innerHTML = zineGallery;
 }
 
+function preloadImage(url)
+{
+    var img = new Image();
+    img.src = url;
+}
+
 function viewZine(collection, zine)
 {
     collectionIndex = collection;
@@ -51,6 +57,11 @@ function viewZine(collection, zine)
     pageIndex = 0;
 
     pageCount = collections[collectionIndex.toString()].zines[zineIndex.toString()].pageCount;
+
+    for (var page = 0; page < pageCount; page++)
+    {
+      preloadImage("zines/" + collections[collectionIndex].path + "/zine" + zineIndex.toString() + "/page" + page.toString() + ".png");
+    }
 
     if (fullscreenZine != null)
     {

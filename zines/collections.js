@@ -5,7 +5,7 @@ collections = {
     "name": "Gameplay Arcade Jam",
     "description": "in collaboration with Biome Collective and Dundee Central Library.",
     "date": "26/06/2017",
-    "zineCount": 6,
+    "zineCount": 2,
     "zines": {
       "0": {
         "name": "X-Y-ZAP",
@@ -25,74 +25,6 @@ collections = {
         }
       },
       "1": {
-        "name": "Cool Interlude",
-        "description": "by Malath Abbass",
-        "orientation": "portrait",
-        "viewStyle": "double",
-        "pageCount": 8,
-        "pageDescriptions": {
-          "0": "",
-          "1": "",
-          "2": "",
-          "3": "",
-          "4": "",
-          "5": "",
-          "6": "",
-          "7": ""
-        }
-      },
-      "2": {
-        "name": "Cool Interlude",
-        "description": "by Malath Abbass",
-        "orientation": "portrait",
-        "viewStyle": "double",
-        "pageCount": 8,
-        "pageDescriptions": {
-          "0": "",
-          "1": "",
-          "2": "",
-          "3": "",
-          "4": "",
-          "5": "",
-          "6": "",
-          "7": ""
-        }
-      },
-      "3": {
-        "name": "Cool Interlude",
-        "description": "by Malath Abbass",
-        "orientation": "portrait",
-        "viewStyle": "double",
-        "pageCount": 8,
-        "pageDescriptions": {
-          "0": "",
-          "1": "",
-          "2": "",
-          "3": "",
-          "4": "",
-          "5": "",
-          "6": "",
-          "7": ""
-        }
-      },
-      "4": {
-        "name": "Cool Interlude",
-        "description": "by Malath Abbass",
-        "orientation": "portrait",
-        "viewStyle": "double",
-        "pageCount": 8,
-        "pageDescriptions": {
-          "0": "",
-          "1": "",
-          "2": "",
-          "3": "",
-          "4": "",
-          "5": "",
-          "6": "",
-          "7": ""
-        }
-      },
-      "5": {
         "name": "Cool Interlude",
         "description": "by Malath Abbass",
         "orientation": "portrait",

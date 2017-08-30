@@ -287,18 +287,13 @@ a:visited
 
 #fullscreen-background
 {
-  background-color: #000000;
+  background: url(images/background.png) no-repeat center center fixed;
   position: fixed;
   width: 100%;
   height: 100%;
   left: 0;
   top: 0;
   z-index: 10;
-}
-
-#fullscreen-background:before
-{
-  opacity: 0.8;
 }
 
 #fullscreen-header

@@ -9,6 +9,8 @@ var turnTime = 0.5 * 1000;
 
 function initViewer()
 {
+  preloadImage("images/cross.png");
+
   viewGallery();
 }
 

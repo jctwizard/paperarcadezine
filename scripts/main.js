@@ -172,3 +172,8 @@ function activateCheats()
   audio.play();
   konamiCodePosition = 0;
 }
+
+function isMobile()
+{
+   return (/Mobile|Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) );
+}

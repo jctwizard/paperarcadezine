@@ -134,8 +134,15 @@ function turnCover()
       cover = coverClone;
     }
 
-    cover.classList.add("turnFromCover");
-    setTimeout("removeById('fullscreen-zine-cover')", turnTime + 1600);
+    if (isMobile())
+    {
+      removeById('fullscreen-zine-cover');
+    }
+    else
+    {
+      cover.classList.add("turnFromCover");
+      setTimeout("removeById('fullscreen-zine-cover')", turnTime + 1600);
+    }
 
     if (pageCount > 1)
     {
@@ -143,7 +150,12 @@ function turnCover()
       zineLeftPage.setAttribute('id', 'fullscreen-zine-page-left');
       zineLeftPage.setAttribute('onclick', 'turnBackPage()');
       zineLeftPage.setAttribute('src', "zines/" + collections[collectionIndex].path + "/zine" + zineIndex.toString() + "/page1.png");
-      zineLeftPage.classList.add("turnLeftFromCover");
+
+      if (!isMobile())
+      {
+        zineLeftPage.classList.add("turnLeftFromCover");
+      }
+
       zineContainer.appendChild(zineLeftPage);
     }
 
@@ -153,7 +165,12 @@ function turnCover()
       zineRightPage.setAttribute('id', 'fullscreen-zine-page-right');
       zineRightPage.setAttribute('onclick', 'turnForwardPage()');
       zineRightPage.setAttribute('src', "zines/" + collections[collectionIndex].path + "/zine" + zineIndex.toString() + "/page2.png");
-      zineRightPage.classList.add("turnRightFromCover");
+
+      if (!isMobile())
+      {
+        zineRightPage.classList.add("turnRightFromCover");
+      }
+
       zineContainer.appendChild(zineRightPage);
     }
 
@@ -175,12 +192,26 @@ function turnBackPage()
     pageLeft = pageLeftClone;
   }
 
-  pageLeft.classList.add("turnFromLeftPage");
-  setTimeout("removeById('fullscreen-zine-page-left')", turnTime + 100);
+  if (isMobile())
+  {
+    removeById('fullscreen-zine-page-left');
+  }
+  else
+  {
+    pageLeft.classList.add("turnFromLeftPage");
+    setTimeout("removeById('fullscreen-zine-page-left')", turnTime + 100);
+  }
 
   if (pageIndex < (pageCount - 1))
   {
-    setTimeout("removeById('fullscreen-zine-page-right')", turnTime * 2 + 100);
+    if (isMobile())
+    {
+      removeById('fullscreen-zine-page-right');
+    }
+    else
+    {
+      setTimeout("removeById('fullscreen-zine-page-right')", turnTime * 2 + 100);
+    }
   }
 
   if (pageIndex == 1)
@@ -189,7 +220,12 @@ function turnBackPage()
       zineCover.setAttribute('id', 'fullscreen-zine-cover');
       zineCover.setAttribute('onclick', 'turnCover()');
       zineCover.setAttribute('src', "zines/" + collections[collectionIndex].path + "/zine" + zineIndex.toString() + "/page0.png");
-      zineCover.classList.add("turnToCover");
+
+      if (!isMobile())
+      {
+        zineCover.classList.add("turnToCover");
+      }
+
       zineContainer.appendChild(zineCover);
 
       pageIndex = 0;
@@ -209,7 +245,12 @@ function turnBackPage()
     zineRightPage.setAttribute('id', 'fullscreen-zine-page-right');
     zineRightPage.setAttribute('onclick', 'turnForwardPage()');
     zineRightPage.setAttribute('src', "zines/" + collections[collectionIndex].path + "/zine" + zineIndex.toString() + "/page" + (pageIndex + 1).toString() + ".png");
-    zineRightPage.classList.add("turnToRightPage");
+
+    if (!isMobile())
+    {
+      zineRightPage.classList.add("turnToRightPage");
+    }
+
     zineContainer.appendChild(zineRightPage);
   }
 }
@@ -231,9 +272,17 @@ function turnForwardPage()
       pageRight = pageRightClone;
     }
 
-    pageRight.classList.add("turnFromRightPage");
-    setTimeout("removeById('fullscreen-zine-page-left')", turnTime * 2 + 100);
-    setTimeout("removeById('fullscreen-zine-page-right')", turnTime + 100);
+    if (isMobile())
+    {
+      removeById('fullscreen-zine-page-left');
+      removeById('fullscreen-zine-page-right');
+    }
+    else
+    {
+      pageRight.classList.add("turnFromRightPage");
+      setTimeout("removeById('fullscreen-zine-page-left')", turnTime * 2 + 100);
+      setTimeout("removeById('fullscreen-zine-page-right')", turnTime + 100);
+    }
 
     pageIndex += 2;
 
@@ -241,7 +290,12 @@ function turnForwardPage()
     zineLeftPage.setAttribute('id', 'fullscreen-zine-page-left');
     zineLeftPage.setAttribute('onclick', 'turnBackPage()');
     zineLeftPage.setAttribute('src', "zines/" + collections[collectionIndex].path + "/zine" + zineIndex.toString() + "/page" + pageIndex.toString() + ".png");
-    zineLeftPage.classList.add("turnToLeftPage");
+
+    if (!isMobile())
+    {
+      zineLeftPage.classList.add("turnToLeftPage");
+    }
+
     zineContainer.appendChild(zineLeftPage);
 
     if ((pageIndex + 1) < pageCount)

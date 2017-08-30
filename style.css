@@ -213,9 +213,7 @@ a:visited
 
 .gallery-prompt
 {
-  bottom: 0;
-  position: fixed;
-  color: white;
+  color: black;
   font-family: monospace;
   font-size: 1.5vw;
   margin: auto;

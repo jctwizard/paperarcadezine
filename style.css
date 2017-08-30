@@ -211,6 +211,14 @@ a:visited
   filter: grayscale(0%);
 }
 
+.gallery-prompt
+{
+  color: white;
+  font-family: monospace;
+  font-size: 2.5vw;
+  margin: auto;
+}
+
 .gallery-collection-container
 {
   color: white;

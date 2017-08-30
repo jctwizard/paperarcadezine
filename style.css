@@ -213,12 +213,12 @@ a:visited
 
 .gallery-prompt
 {
-  color: black;
-  font-family: monospace;
-  font-size: 1.5vw;
-  margin: auto;
-  text-align: center;
   width: 100%;
+  color: white;
+  font-family: monospace;
+  font-size: 2vw;
+  text-align: center;
+  background-color: black;
 }
 
 .gallery-collection-container
@@ -575,6 +575,11 @@ a:visited
   #link-bar-container
   {
     font-size: 27px;
+  }
+
+  .gallery-prompt
+  {
+    font-size: 18px;
   }
 
   #newsletter-form

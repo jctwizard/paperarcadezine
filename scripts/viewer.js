@@ -16,7 +16,7 @@ function initViewer()
 
 function viewGallery()
 {
-  var zineGallery = "<div class='gallery-prompt'>click on cover to view a zine</div>";
+  var zineGallery = "";
 
   // newest first
   for (var collection = collections.collectionCount - 1; collection >= 0; collection--)

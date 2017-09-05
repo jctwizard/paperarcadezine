@@ -122,62 +122,65 @@ function exitZine()
 
 function turnCover()
 {
-    var zineContainer = document.getElementById("fullscreen-zine");
-
-    var cover = document.getElementById("fullscreen-zine-cover");
-
-    if (cover.classList.contains("turnToCover"))
-    {
-      cover.classList.remove("turnToCover");
-      var coverClone = cover.cloneNode(true);
-      zineContainer.appendChild(coverClone);
-      cover.remove();
-      cover = coverClone;
-    }
-
-    if (isMobile())
-    {
-      removeById('fullscreen-zine-cover');
-    }
-    else
-    {
-      cover.classList.add("turnFromCover");
-      setTimeout("removeById('fullscreen-zine-cover')", turnTime + 1600);
-    }
-
     if (pageCount > 1)
     {
-      var zineLeftPage = document.createElement('img');
-      zineLeftPage.setAttribute('id', 'fullscreen-zine-page-left');
-      zineLeftPage.setAttribute('onclick', 'turnBackPage()');
-      zineLeftPage.setAttribute('src', "zines/" + collections[collectionIndex].path + "/zine" + zineIndex.toString() + "/page1.png");
-      zineLeftPage.setAttribute('alt', "alt='loading...'");
+      var zineContainer = document.getElementById("fullscreen-zine");
 
-      if (!isMobile())
+      var cover = document.getElementById("fullscreen-zine-cover");
+
+      if (cover.classList.contains("turnToCover"))
       {
-        zineLeftPage.classList.add("turnLeftFromCover");
+        cover.classList.remove("turnToCover");
+        var coverClone = cover.cloneNode(true);
+        zineContainer.appendChild(coverClone);
+        cover.remove();
+        cover = coverClone;
       }
 
-      zineContainer.appendChild(zineLeftPage);
-    }
-
-    if (pageCount > 2)
-    {
-      var zineRightPage = document.createElement('img');
-      zineRightPage.setAttribute('id', 'fullscreen-zine-page-right');
-      zineRightPage.setAttribute('onclick', 'turnForwardPage()');
-      zineRightPage.setAttribute('src', "zines/" + collections[collectionIndex].path + "/zine" + zineIndex.toString() + "/page2.png");
-      zineRightPage.setAttribute('alt', "alt='loading...'");
-
-      if (!isMobile())
+      if (isMobile())
       {
-        zineRightPage.classList.add("turnRightFromCover");
+        removeById('fullscreen-zine-cover');
+      }
+      else
+      {
+        cover.classList.add("turnFromCover");
+        setTimeout("removeById('fullscreen-zine-cover')", turnTime + 1600);
       }
 
-      zineContainer.appendChild(zineRightPage);
-    }
+      if (pageCount > 1)
+      {
+        var zineLeftPage = document.createElement('img');
+        zineLeftPage.setAttribute('id', 'fullscreen-zine-page-left');
+        zineLeftPage.setAttribute('onclick', 'turnBackPage()');
+        zineLeftPage.setAttribute('src', "zines/" + collections[collectionIndex].path + "/zine" + zineIndex.toString() + "/page1.png");
+        zineLeftPage.setAttribute('alt', "alt='loading...'");
 
-    pageIndex = 1;
+        if (!isMobile())
+        {
+          zineLeftPage.classList.add("turnLeftFromCover");
+        }
+
+        zineContainer.appendChild(zineLeftPage);
+      }
+
+      if (pageCount > 2)
+      {
+        var zineRightPage = document.createElement('img');
+        zineRightPage.setAttribute('id', 'fullscreen-zine-page-right');
+        zineRightPage.setAttribute('onclick', 'turnForwardPage()');
+        zineRightPage.setAttribute('src', "zines/" + collections[collectionIndex].path + "/zine" + zineIndex.toString() + "/page2.png");
+        zineRightPage.setAttribute('alt', "alt='loading...'");
+
+        if (!isMobile())
+        {
+          zineRightPage.classList.add("turnRightFromCover");
+        }
+
+        zineContainer.appendChild(zineRightPage);
+      }
+
+      pageIndex = 1;
+    }
 }
 
 function turnBackPage()

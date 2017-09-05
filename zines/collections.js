@@ -5,7 +5,7 @@ var collections = {
     "name": "Gameplay Arcade Jam",
     "description": "in collaboration with Biome Collective and Dundee Central Library.",
     "date": "26/06/2017",
-    "zineCount": 6,
+    "zineCount": 9,
     "zines": {
       "0": {
         "name": "X-Y-ZAP",
@@ -99,6 +99,43 @@ var collections = {
           "2": "",
           "3": "",
           "4": ""
+        }
+      },
+      "6": {
+        "name": "Untitled",
+        "description": "by Thomas Wood",
+        "orientation": "portrait",
+        "viewStyle": "double",
+        "pageCount": 2,
+        "pageDescriptions": {
+          "0": "",
+          "1": ""
+        }
+      },
+      "7": {
+        "name": "Untitled",
+        "description": "by Jack",
+        "orientation": "portrait",
+        "viewStyle": "double",
+        "pageCount": 1,
+        "pageDescriptions": {
+          "0": ""
+        }
+      },
+      "8": {
+        "name": "Magase N",
+        "description": "by Chloe",
+        "orientation": "portrait",
+        "viewStyle": "double",
+        "pageCount": 7,
+        "pageDescriptions": {
+          "0": "",
+          "1": "",
+          "2": "",
+          "3": "",
+          "4": "",
+          "5": "",
+          "6": ""
         }
       }
     }

@@ -279,8 +279,8 @@ a:visited
 .gallery-zine-cover
 {
   position: relative;
-  width: 40vw;
-  height: 40vw;
+  width: 35vw;
+  height: 35vw;
   display: table-cell;
   vertical-align: middle;
 }

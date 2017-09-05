@@ -263,7 +263,7 @@ function turnBackPage()
 
 function turnForwardPage()
 {
-  if (pageIndex < (pageCount - 1))
+  if (pageIndex < (pageCount - 2))
   {
     var zineContainer = document.getElementById("fullscreen-zine");
 

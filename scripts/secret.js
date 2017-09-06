@@ -5,10 +5,11 @@ if (!Detector.webgl) {
 
 // All of these variables will be needed later, just ignore them for now.
 var container;
-var camera, controls, scene, renderer;
+var camera, controls, scene, renderer, cabinet_object;
 var lighting, ambient, keyLight, fillLight, backLight;
 var windowHalfX = window.innerWidth / 2;
 var windowHalfY = window.innerHeight / 2;
+var clock = new THREE.Clock();
 
 init();
 render();
@@ -16,6 +17,7 @@ render();
 function init()
 {
   container = document.createElement('div');
+  container.id = "view";
   document.body.appendChild(container);
 
   camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000);
@@ -25,10 +27,10 @@ function init()
   ambient = new THREE.AmbientLight(0xffffff, 1.0);
   scene.add(ambient);
 
-  keyLight = new THREE.DirectionalLight(new THREE.Color('hsl(30, 100%, 75%)'), 1.0);
+  keyLight = new THREE.DirectionalLight(0xffffff, 1.0);
   keyLight.position.set(-100, 0, 100);
 
-  fillLight = new THREE.DirectionalLight(new THREE.Color('hsl(240, 100%, 75%)'), 0.75);
+  fillLight = new THREE.DirectionalLight(0xffffff, 1.0);
   fillLight.position.set(100, 0, 100);
 
   backLight = new THREE.DirectionalLight(0xffffff, 1.0);
@@ -52,6 +54,7 @@ function init()
       {
         cabinet.scale.set(0.2, 0.2, 0.2);
         cabinet.rotation.set(0, -90, 0);
+        cabinet_object = cabinet;
         scene.add(cabinet);
       });
   });
@@ -66,16 +69,14 @@ function init()
 
     objLoader.load('screen.obj', function (cabinet_screen)
     {
-      cabinet_screen.scale.set(0.2, 0.2, 0.2);
-      cabinet_screen.rotation.set(0, -90, 0);
-      scene.add(cabinet_screen);
+      cabinet_object.add(cabinet_screen);
     });
   });
 
   renderer = new THREE.WebGLRenderer();
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setClearColor(new THREE.Color("#FFFFFF"));
+  renderer.setClearColor(new THREE.Color("0xFFFFFF"));
 
   container.appendChild(renderer.domElement);
 
@@ -87,7 +88,9 @@ function init()
 
 function render()
 {
-    requestAnimationFrame(render);
-    controls.update();
-    renderer.render(scene, camera);
+  var delta = clock.getDelta();
+
+  requestAnimationFrame(render);
+  cabinet_object.rotation.set(cabinet_object.rotation.x, cabinet_object.rotation.y + 0.05 * delta, cabinet_object.rotation.z);
+  renderer.render(scene, camera);
 }
